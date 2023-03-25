@@ -1,0 +1,64 @@
+{% extends 'adminheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          h2{
+               margin-top: 20px;
+               text-align: center;
+          }
+          table{
+               margin: auto;
+               border-collapse: collapse;
+               margin-top: 10px;
+          }
+          th{
+               text-align: center;
+          }
+          th,td{
+               padding: 10px;
+               border: 1px solid black;
+          }
+     </style>
+</head>
+<body>
+<h2>Manage Cars</h2>
+<table>
+     <tr>
+          <th>Car Id</th>
+          <th>Brand Name</th>
+          <th>Car Name</th>
+          <th>Model Name</th>
+          <th>Seat</th>
+          <th>Fuel</th>
+          <th>Price</th>
+          <th>Image</th>
+          <th>Action</th>
+     </tr>
+     {% for i in value %}
+     <tr>
+          <td>{{i.id}}</td>
+          <td>{{i.brandname}}</td>
+          <td>{{i.carname}}</td>
+          <td>{{i.modelname}}</td>
+          <td>{{i.seats}}</td>
+          <td>{{i.fuel}}</td>
+          <td>{{i.price}}</td>
+          <td><img src="static/media/{{i.image}}" width="120px"alt="image" width="50"></td>
+          <td><a href="updatecardetails?id={{i.id}}"><button type="button" class="btn btn-warning">Update</button></a>
+               <a href="deletecars?id={{i.id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+          </td>
+     </tr>
+
+
+     {% endfor %}
+</table>
+</body>
+</html>
+
+{% endblock %}

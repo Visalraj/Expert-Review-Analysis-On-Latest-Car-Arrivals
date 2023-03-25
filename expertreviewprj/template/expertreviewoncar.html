@@ -1,0 +1,91 @@
+{% extends 'expertheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          h2{
+               margin: auto;
+               text-align: center;
+               margin-top: 30px;
+          }
+          #review{
+               width:fit-content;
+               margin: 10px;
+               margin-top: 10px;
+               padding: 10px;
+               background: lightblue;
+          }
+          #carid{
+               pointer-events: none;
+          }
+     </style>
+</head>
+<body>
+     <h2>Expert Review</h2>
+     <form action="" method="POST" id="review">
+          {% csrf_token %}
+         <label for="Carid">Car Id</label><br>
+          <input type="text" name="carid" id="carid" value="{{carid.id}}"><br>
+          <label for="Mileage">Mileage</label><br>
+          <input type="radio" name="mileage" id="mileage" value="<10"> <10
+          <input type="radio" name="mileage" id="mileage" value="<15"><15
+          <input type="radio" name="mileage" id="mileage" value="above 15">above 15
+          <input type="radio" name="mileage" id="mileage" value="above 20">above 20<br>
+
+          <label for="ExtandINt">Exterior and Interior</label><br>
+          <input type="radio" name="ext" id="ext" value="Poor"> Poor
+          <input type="radio" name="ext" id="ext" value="Good">Good
+          <input type="radio" name="ext" id="ext" value="Average"> Average
+          <input type="radio" name="ext" id="ext" value="Excellent">Excellent<br>
+
+          <label for="Engine">Engine and Transmission</label><br>
+          <input type="radio" name="engine" id="engine" value="Poor"> Poor
+          <input type="radio" name="engine" id="engine" value="Good">Good
+          <input type="radio" name="engine" id="engine" value="Average"> Average
+          <input type="radio" name="engine" id="engine" value="Excellent">Excellent<br>
+
+          <label for="suspension">Suspension and Brakes</label><br>
+          <input type="radio" name="sus" id="sus" value="Poor"> Poor
+          <input type="radio" name="sus" id="sus" value="Good">Good
+          <input type="radio" name="sus" id="sus" value="Average"> Average
+          <input type="radio" name="sus" id="sus" value="Excellent">Excellent<br>
+
+          <label for="electrical">Electrical and Electronic Systems</label><br>
+          <input type="radio" name="electrical" id="electrical" value="Poor"> Poor
+          <input type="radio" name="electrical" id="electrical" value="Good">Good
+          <input type="radio" name="electrical" id="electrical" value="Average"> Average
+          <input type="radio" name="electrical" id="electrical" value="Excellent">Excellent<br>
+
+          <label for="fluids">Fluids and Filters</label><br>
+          <input type="radio" name="fluids" id="fluids" value="Poor"> Poor
+          <input type="radio" name="fluids" id="fluids" value="Good">Good
+          <input type="radio" name="fluids" id="fluids" value="Average"> Average
+          <input type="radio" name="fluids" id="fluids" value="Excellent">Excellent<br>
+
+          <label for="fluids">Tires and Wheels</label><br>
+          <input type="radio" name="tires" id="tires" value="Poor"> Poor
+          <input type="radio" name="tires" id="tires" value="Good">Good
+          <input type="radio" name="tires" id="tires" value="Average"> Average
+          <input type="radio" name="tires" id="tires" value="Excellent">Excellent<br>
+          
+          <label for="fluids">Additional Information</label><br>
+          <textarea rows="3" cols="20" name="info"></textarea><br>
+          <input type="submit" value="Add Review">
+
+
+          
+
+
+
+
+
+     </form>
+
+</body>
+</html>
+{% endblock %}

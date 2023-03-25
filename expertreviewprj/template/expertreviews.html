@@ -1,0 +1,61 @@
+{% extends 'adminheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title></title>
+     <style>
+               h3{
+          margin: auto;
+          margin-top: 15px;
+     }
+     table{
+          margin: auto;
+          margin-top: 15px;
+          border-collapse: collapse; /*This will remove the default spacing between cells*/
+     }
+     th, td{
+          text-align: center;
+          padding: 10px; /* This will add padding to your cells */
+          border: 1px solid black; /* This will add borders to your cells */
+     }
+     #links{
+          margin: 5px;
+     }
+     </style>
+</head>
+<body>
+     <h3><center>Experts Reviews</center></h3><br>
+     <table border="1" >
+          <tr>
+               <th>Expert Id</th>
+               <th>FirstName</th>
+     
+ 
+               <th>Email</th>
+
+               <th>Experience</th>
+               <th>Action</th>
+          </tr>
+          {% for i in value %}
+          <tr>
+               <td>{{i.id}}</td>
+               <td>{{i.firstname}}</td>
+
+  
+               <td>{{i.email}}</td>
+
+               <td>{{i.experience}}</td>
+               <td><a href="showreviews?id={{i.id}}"><button type="button" class="btn btn-info">Show Reviews</button></a></td>
+          </tr>
+          {% endfor %}
+
+
+          
+     </table>
+</body>
+</html>
+{% endblock %}

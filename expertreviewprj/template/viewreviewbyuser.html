@@ -1,0 +1,139 @@
+{% extends 'userheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+            @font-face{
+  font-family: 'Colfax';
+    src: url('static/fonts/Colfax-Light.woff2') format('woff2'), 
+       url('static/fonts/Colfax-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+  .main-banner{
+               width:100%;
+               padding: 5px;
+               background: rgb(223, 212, 223);
+               margin-top: 20px;    
+          }
+          .section{
+               width: 100%;
+               background: lightblue;
+               margin-top: 10px;
+               padding: 10px;
+          }
+          #lab{
+                width:22%;
+                font-family: 'Colfax';
+               font-size: 14px;
+               font-weight:700;
+               margin: 10px;
+               margin-left: 20px; 
+
+          }
+          #box{
+               margin: 5px;
+               width: 250px;
+               pointer-events: none;
+               border: none;
+               height: 30px;
+               border-radius: 6px;
+               font-family: 'Colfax';
+               font-weight: 700 ;
+          }
+          #txt{
+               resize: none;
+               width: 257px;
+               height: 40px;
+               margin-top: 5px;
+               border: none;
+               border-radius: 6px;
+               font-family: 'Colfax';
+               font-weight: 700;
+          }
+          .btn{
+               width: 200px;
+               margin-top: 15px;
+               padding: 10px;
+               font-family: 'Colfax';
+               font-size: 18px;
+          }
+          svg{
+               height: 12px;
+          }
+          #spanelementsone{
+               color: black;
+               font-size: 15px; 
+               margin-left: 15px;
+               margin: 5px;
+          }
+
+     </style>
+</head>
+<body>
+     {% for review in review %}
+<div class="main-banner" style="display: inline-block">
+     <img src="static/media/{{review.cid.image}}" width="30%" alt="carimage">
+<div class="bodysection" style="display:inline-block">
+<!-- <p >Car Name:{{review.cid.carname}}</p>
+<p style="color: black;font-size: 16px;">Brand Name:</p> -->
+<span id="spanelementsone" >Brand Name: <span style="font-size: 18px;font-weight: 500;">{{review.cid.brandname}}.</span></span>
+<span  id="spanelementsone"> Car Name: <span style="font-size: 18px;font-weight: 500;">{{review.cid.carname}}.</span></span><br>
+<span id="spanelementsone" >Fuel: <span style="font-size: 18px;font-weight: 500;">{{review.cid.fuel}}.</span></span>
+<span  id="spanelementsone"> Price: <span style="font-size: 18px;font-weight: 500;">{{review.cid.price}}.</span></span>
+
+</div>
+</div>
+
+<div class="section">
+     <label for="Mileage" id="lab">Mileage</label>
+     <input type="text" value="{{review.mileage}}" id="box">
+
+     <label for="Exterior and Interior" id="lab">Exterior and Interior</label>
+     <input type="text" value="{{review.extandint}}" id="box">
+
+     <label for="Engine" id="lab">Engine and Transmission</label>
+     <input type="text" value="{{review.engine}}" id="box">
+
+     <label for="Suspension and Brakes" id="lab">Suspension and Brakes</label>
+     <input type="text" value="{{review.suspension}}" id="box">
+
+     <label for="Electrical and Electronic Systems" id="lab">Electrical and Electronic Systems</label>
+     <input type="text" value="{{review.electronics}}" id="box">
+
+     <label for="Fluids and Filters" id="lab">Fluids and Filters</label>
+     <input type="text" value="{{review.fluids}}" id="box">
+
+     <label for="Tires and Wheels" id="lab">Tires and Wheels</label>
+     <input type="text" value="{{review.tires}}" id="box">
+
+     <label for="fluids" id="lab">Additional Information</label>
+     <textarea id="txt" name="info">{{review.info}}</textarea><br>
+
+     <a href="/carreviewbyexperts"><button type="submit" class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+        </svg>Back
+          
+
+
+
+     </button></a>
+     <button type="submit" class="btn btn-success">Buy Now
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="13" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+               <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+             </svg>
+
+
+     </button>
+</div>
+{% endfor %}
+</body>
+</html>
+
+{% endblock %}

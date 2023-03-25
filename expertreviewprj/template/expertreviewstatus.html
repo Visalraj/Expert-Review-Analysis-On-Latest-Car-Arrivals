@@ -1,0 +1,59 @@
+{% extends 'expertheader.html' %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          table {
+               margin: auto;
+               margin-top: 15px;
+               border-collapse: collapse;
+               /*This will remove the default spacing between cells*/
+          }
+
+          th,
+          td {
+               text-align: center;
+               padding: 10px;
+               /* This will add padding to your cells */
+               border: 1px solid black;
+               /* This will add borders to your cells */
+          }
+     </style>
+</head>
+
+<body>
+     <table>
+          <tr>
+               <th> Carid </th>
+               <th> Timestamp </th>
+               <th> Car Image </th>
+               <th> Status</th>
+          </tr>
+          {% for review in values %}
+          <tr>
+               <td>{{review.cid.id}}</td>
+               <td>{{ review.timestamp }}</td>
+               <td><img src="static/media/{{review.cid.image}}" alt="img" width="150px"></td>
+               <td>
+                    {% if review.statusofreview == 0 %}
+                    <button type="button" class="btn btn-warning">Pending</button>
+                    {% else %}
+                    <button type="button" class="btn btn-success">Approved</button>
+                    {% endif%}
+               </td>
+          </tr>
+          {% endfor %}
+
+     </table>
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'userheader.html'%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+                   @font-face{
+  font-family: 'Colfax';
+    src: url('static/fonts/Colfax-Light.woff2') format('woff2'), 
+       url('static/fonts/Colfax-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+          .card{
+               width:18rem;
+               background:rgb(27, 30, 31);
+               padding: 10px;
+               margin-top: 30px;
+               float: left;
+               margin-left: 90px;
+               font-family: 'Colfax';
+
+          }
+          .card-title{
+               margin-top: 10px;
+          }
+          .btn{
+               width: 200px;
+               margin-top: 10px;
+               padding: 8px;
+  
+               font-size: 18px;
+               font-weight: 300;
+
+          }
+          svg{
+               height: 12px;
+          }
+     </style>
+</head>
+<body>
+     {% for i in value %}
+     <form action="" method="post">
+          <div class="card" style="width: 18rem;">
+              <img src="{{ i.image.url }}" class="card-img-top" alt="image here" width="270rem" height="150rem">
+              <div class="card-body">
+                  <h5 class="card-title" style="color: white;">{{ i.brandname }} {{ i.carname }}</h5>
+                  <p class="card-text" style="color: white;margin-top: 7px;">Model Name: {{i.modelname}}</p>
+                  <p class="card-text" style="color: white;">Price: {{i.price}}</p>
+                  <a href="viewreviewbyuser?id={{i.id}}" class="btn btn-secondary">Show Review  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="13" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                  </svg></a>
+              </div> 
+          </div>
+       </form>
+       {% endfor %}
+</body>
+</html>
+{% endblock %}

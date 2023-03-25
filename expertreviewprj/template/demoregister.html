@@ -1,0 +1,221 @@
+{% extends 'commonheader.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Registration</title>
+     <style>
+          @font-face{
+  font-family: 'Colfax';
+    src: url('static/fonts/Colfax-Light.woff2') format('woff2'), 
+       url('static/fonts/Colfax-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+          #registration {
+               text-align: center;
+               padding: 10px;
+               color: #EF5861;
+               margin-top: 15px;
+               font-family: 'Colfax';
+               font-size: 32px;
+               font-weight: 700;
+          }
+
+          form {
+               background: lightlue;
+               width: fit-content;
+               margin: auto;
+               padding: 15px;
+               border-radius: 8px;
+               text-align: center;
+               font-family: 'Colfax';
+          }
+
+ 
+
+          #firstname,
+          #lastname {
+               width: 450px;
+               border-top: 1px;
+               border-left: none;
+               border-right: none;
+               outline: none;
+               border-width: 1px;
+               margin: 10px;
+               margin-top: 15px;
+               letter-spacing: 0.1em;
+               font-family: 'Colfax';
+               font-size: 14px;
+               font-weight: 600;
+          }
+
+          #address,#gender,#date {
+               margin-top: 15px;
+               width: 450px;
+               border-top: 1px;
+               border-left: none;
+               border-right: none;
+               outline: none;
+               border-width: 1px;
+               margin: 10px;
+               margin-top: 15px;
+               letter-spacing: 0.1em;
+               font-family: 'Colfax';
+               font-size: 14px;
+               font-weight: 600;
+               color: gray;
+          }
+
+          #state,
+          #district,
+          #type {
+               margin-top: 15px;
+               margin-left: 10px;
+               width: 459px;
+               border-top: 1px;
+               border-left: none;
+               border-right: none;
+               outline: none;
+               border-width: 1px;
+               letter-spacing: 0.1em;
+               font-family: 'Colfax';
+               font-size: 14px;
+               font-weight: 600;
+               color: gray;
+          }
+
+          #city,
+          #pincode {
+               width: 450px;
+               border-top: 1px;
+               border-left: none;
+               border-right: none;
+               outline: none;
+               border-width: 1px;
+               margin: 10px;
+               margin-top: 20px;
+               letter-spacing: 0.1em;
+               font-family: 'Colfax';
+               font-size: 14px;
+               font-weight: 600;
+          }
+
+          #phone,
+          #email {
+               width: 450px;
+               border-top: 1px;
+               border-left: none;
+               border-right: none;
+               outline: none;
+               border-width: 1px;
+               margin: 10px;
+               margin-top: 15px;
+               letter-spacing: 0.1em;
+               font-family: 'Colfax';
+               font-size: 14px;
+               font-weight: 600;
+          }
+
+          #password {
+               width: 450px;
+               border-top: 1px;
+               border-left: none;
+               border-right: none;
+               outline: none;
+               border-width: 1px;
+               margin: 10px;
+               margin-top: 15px;
+               letter-spacing: 0.1em;
+               font-family: 'Colfax';
+               font-size: 14px;
+               font-weight: 600;
+          }
+
+          #submit {
+               display: block;
+               margin: auto;
+               margin-top: 30px;
+               width: 55%;
+               background: #EF5861;
+               border: none;
+               padding: 5px;
+               border-radius: 8px;
+               letter-spacing: 0.01em;
+               font-family: 'Colfax';
+               font-size: 18px;
+               font-weight: 600;
+          }
+
+          #submit:hover {
+               background-color: green;
+               color: white;
+          }
+     </style>
+</head>
+
+<body>
+     <h1 id="registration"> User Registration Form</h1>
+     <form action="" method="POST">
+          {% csrf_token %}
+
+          <input type="text" name="firstname" id="firstname" placeholder="FirstName">
+
+          <input type="text" name="lastname" id="lastname" placeholder="LastName">
+
+          <input type="date" name="date" id="date">
+
+                    <select name="gender" id="gender">
+               <option value="gender">Gender</option>
+               <option value="Male">Male</option>
+               <option value="Female">Female</option>
+               <option value="null">Prefer Not to Say</option>
+          </select>
+
+          <input type="text" name="addlineone" id="address" placeholder="Address Line One">
+
+          <input type="text" name="addlinetwo" id="address" placeholder="Address Line Two">
+
+          <select name="state" id="state">
+               <option value="state">State</option>
+               <option value="Kerala">Kerala</option>
+          </select>
+
+                    <select name="district" id="district">
+               <option value="district">District</option>
+               <option value="Ernakulam">Ernakulam</option>
+          </select>
+
+          
+
+
+
+          <input type="text" name="city" id="city" placeholder="City">
+
+          <input type="text" name="pincode" id="pincode" placeholder="Pincode">
+
+          <input type="text" name="phone" id="phone" placeholder="Mobile Number">
+
+          <input type="email" name="email" id="email" placeholder="Email">
+
+          <input type="password" name="password" id="password" placeholder="Password">
+
+          <input type="password" name="cpassword" id="password" placeholder="Confirm Password">
+
+
+
+          <input type="submit" value="Submit" id="submit">
+
+     </form>
+</body>
+
+</html>
+{% endblock %}
+
+
+

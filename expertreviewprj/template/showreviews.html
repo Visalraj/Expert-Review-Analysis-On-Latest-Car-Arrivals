@@ -1,0 +1,68 @@
+ {% extends 'adminheader.html' %}
+ {% block content %}
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          h2{
+               margin: 10px;
+          }
+          table{
+               margin: auto;
+               border-collapse: collapse;
+          }
+          th,td{
+               padding: 5px;
+               font-size: 14px;
+               border: 1px solid black;
+               text-align: center;
+          }
+     </style>
+ </head>
+ <body>
+     <h2><center>Expert Reviews</center></h2>
+     <table>
+          <tr>
+          <th>Car Id</th>
+          <th>Mileage</th>
+          <th>Exterior and Interiors</th>
+          <th>Engine and Transmission</th>
+          <th>Suspension and Brakes</th>
+          <th>Electric and Electronic Systems</th>
+          <th>Fluids and Filters</th>
+          <th>Tires and Wheels</th>
+          <th>Additional Information</th>
+          <th>Timestamp</th>
+          <th>Image</th>
+          <th>Action</th>
+     </tr>
+     {% for value in values %}
+     <tr>
+          <td>{{value.cid.id}}</td>
+          <td>{{value.mileage}}</td>
+          <td>{{value.extandint}}</td>
+          <td>{{value.engine}}</td>
+          <td>{{value.suspension}}</td>
+          <td>{{value.electronics}}</td>
+          <td>{{value.fluids}}</td>
+          <td>{{value.tires}}</td>
+          <td>{{value.info}}</td>
+          <td>{{value.timestamp}}</td>
+          <td><img src="static/media/{{value.cid.image}}" alt="carimage" width="100"></td>
+          <td><a href="acceptreview?carid={{value.cid.id}}"><button type="button" class="btn btn-success">Approve</button></a><br><br>
+               <button type="button" class="btn btn-danger">Reject</button>
+          </td>
+          
+     </tr>
+
+
+
+     {% endfor %}
+     </table>
+ </body>
+ </html>
+ {% endblock %}

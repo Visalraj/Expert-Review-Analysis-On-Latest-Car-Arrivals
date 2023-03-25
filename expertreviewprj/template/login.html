@@ -1,0 +1,77 @@
+{% extends 'commonheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">     <title>Document</title>
+     <style>
+          @font-face{
+  font-family: 'Colfax';
+    src: url('static/fonts/Colfax-Light.woff2') format('woff2'), 
+       url('static/fonts/Colfax-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+          form{
+               margin: auto;
+               background: darkslategrey;
+               width: 320px;
+               height:350px;
+               padding: 10px;
+               margin-top: 80px;
+               font-family: 'colfax';
+                      }
+          #login{
+               text-align: center;
+               font-size: 32px;
+               font-weight: bolder;
+               color: white;
+               margin: 25px;
+          }
+          #username,#password{
+               margin-left: 25px;
+               width: 250px;
+               height: 35px;
+               font-size: 15px;
+               margin-top: 10px;
+               border: none;
+               border-radius: 5px;
+               font-size: 17px;
+               font-weight: 700;
+               font-family: 'Colfax';
+          }
+          #submit{
+               margin-top: 25px;
+               width: 235px;
+               padding: 7px;
+               margin-left: 30px;
+               margin-bottom: 15px;
+               border: none;
+               border-radius: 5px;
+               font-size: 23px;
+               font-weight: 700;
+               font-family: 'Colfax';
+          }
+
+     </style>
+</head>
+<body>
+     <form action="" method="POST">
+          {% csrf_token %}
+          <h3 id="login">Login</h3>
+          <input type="text" name="username" id="username" placeholder="Email">
+          <input type="password" name="password" id="password" placeholder="Password">
+          <input type="submit" value="Login " id="submit">    
+     </form>
+</body>
+</html>
+{% endblock %}
