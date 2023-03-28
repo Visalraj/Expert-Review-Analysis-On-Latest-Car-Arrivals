@@ -10,12 +10,22 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Registration</title>
      <style>
+          @font-face {
+               font-family: 'Colfax';
+               src: url('static/fonts/Colfax-Light.woff2') format('woff2'),
+                    url('static/fonts/Colfax-Bold.woff2') format('woff2');
+               font-weight: normal;
+               font-style: normal;
+          }
 
           #registration {
                text-align: center;
                padding: 10px;
                color: #EF5861;
                margin-top: 15px;
+               font-family: 'Colfax';
+               font-size: 32px;
+               font-weight: 700;
           }
 
           form {
@@ -28,7 +38,7 @@
 
           }
 
- 
+
 
           #firstname,
           #lastname {
@@ -41,12 +51,16 @@
                margin: 10px;
                margin-top: 15px;
                letter-spacing: 0.1em;
-               font-family: Georgia, 'Times New Roman', Times, serif;
-               font-size: 16px;
+               font-family: 'Colfax';
+               font-size: 14px;
+               font-weight: 600;
                color: black;
           }
 
-          #address,#experience,#gender,#date {
+          #address,
+          #experience,
+          #gender,
+          #date {
                margin-top: 15px;
                width: 450px;
                border-top: 1px;
@@ -57,46 +71,18 @@
                margin: 10px;
                margin-top: 15px;
                letter-spacing: 0.1em;
-               font-family: Georgia, 'Times New Roman', Times, serif;
-               font-size: 16px;
- 
+               font-family: 'Colfax';
+               font-size: 14px;
+               font-weight: 600;
+
                color: gray;
           }
 
-          #state,
-          #district,
-          #type {
-               margin-top: 15px;
-               margin-left: 10px;
-               width: 459px;
-               border-top: 1px;
-               border-left: none;
-               border-right: none;
-               outline: none;
-               border-width: 1px;
-               letter-spacing: 0.1em;
-               font-family: Georgia, 'Times New Roman', Times, serif;
-               font-size: 16px;
-               color: gray;
-          }
 
-          #city,
-          #pincode {
-               width: 450px;
-               border-top: 1px;
-               border-left: none;
-               border-right: none;
-               outline: none;
-               border-width: 1px;
-               margin: 10px;
-               margin-top: 20px;
-               letter-spacing: 0.1em;
-               font-family: Georgia, 'Times New Roman', Times, serif;
-               font-size: 16px;
-          }
 
           #phone,
-          #email {
+          #email,
+          #date {
                width: 450px;
                border-top: 1px;
                border-left: none;
@@ -106,8 +92,9 @@
                margin: 10px;
                margin-top: 15px;
                letter-spacing: 0.1em;
-               font-family: Georgia, 'Times New Roman', Times, serif;
-               font-size: 16px;
+               font-family: 'Colfax';
+               font-size: 14px;
+               font-weight: 600;
           }
 
           #password {
@@ -120,8 +107,9 @@
                margin: 10px;
                margin-top: 15px;
                letter-spacing: 0.1em;
-               font-family: Georgia, 'Times New Roman', Times, serif;
-               font-size: 16px;
+               font-family: 'Colfax';
+               font-size: 14px;
+               font-weight: 600;
           }
 
           #submit {
@@ -131,39 +119,65 @@
                width: 55%;
                background: #EF5861;
                border: none;
-               padding: 5px;
+               padding: 8px;
                border-radius: 8px;
                letter-spacing: 0.01em;
-               font-family: Georgia, 'Times New Roman', Times, serif;
-                font-size: 18px;
+               font-family: 'Colfax';
+               font-size: 14px;
+               font-weight: 600;
           }
 
           #submit:hover {
                background-color: green;
                color: white;
           }
-          
+
+          #expandcer {
+               margin: 10px;
+               padding: 10px;
+               margin-left: 80px;
+               font-family: 'Colfax';
+               font-size: 15px;
+               float: left;
+          }
+
+          #qual {
+               margin: 20px;
+          }
      </style>
 </head>
 
 <body>
+     {% if messages %}
+     <script>
+          {% for message in messages %}
+          alert('{{message}}');
+          {% endfor %}
+     </script>
+     {% endif %}
      <h1 id="registration">Expert Registration Form</h1>
-     <form action="" method="POST">
+     <form action="" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
 
           <input type="text" name="fname" id="firstname" placeholder="FirstName">
 
           <input type="text" name="lastname" id="lastname" placeholder="LastName">
 
+          <input type="date" name="date" id="date" placeholder="Dob">
 
-                    <select name="gender" id="gender">
+
+          <select name="gender" id="gender">
                <option value="gender">Gender</option>
                <option value="Male">Male</option>
                <option value="Female">Female</option>
                <option value="null">Prefer Not to Say</option>
           </select>
 
+
           <input type="email" name="email" id="email" placeholder="Email">
+
+
+
 
 
 
@@ -186,7 +200,11 @@
 
           <input type="password" name="password" id="password" placeholder="Password">
 
-          <input type="password" name="cpass" id="password" placeholder="Confirm Password">
+          <label for="expandcer" id="expandcer">Experience Certificate</label><input type="file" name="certificate"
+               id="qual">
+
+
+          <!-- <input type="password" name="cpass" id="password" placeholder="Confirm Password">  -->
 
 
 
@@ -197,6 +215,3 @@
 
 </html>
 {% endblock %}
-
-
-

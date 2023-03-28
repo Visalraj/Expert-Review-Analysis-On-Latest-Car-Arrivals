@@ -1,0 +1,42 @@
+{% extends 'commonheader.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+                              @font-face{
+  font-family: 'Colfax';
+    src: url('static/fonts/Colfax-Light.woff2') format('woff2'), 
+       url('static/fonts/Colfax-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+          #contact{
+               margin: 10px;
+               text-align: center;
+               padding: 10px;
+               font-family: 'Colfax';
+               font-size: 24px;
+               font-weight: 600;
+          }
+          #nameandemail{
+               font-family: 'Colfax';
+               font-size: 16px;
+               font-weight: 600;
+               color: black;
+          }
+
+     </style>
+</head>
+<body>
+     <h3 id="contact">Connect the Developer</h3>
+     <p id="nameandemail">Name:Visalraj</p>
+     <p id="nameandemail">Email: <a href="mailto:visalraj.in@gmail.com" style="text-decoration: none;">visalraj.in@gmail.com</a></p>
+
+</body>
+</html>
+{% endblock %}

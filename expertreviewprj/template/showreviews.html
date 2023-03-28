@@ -21,9 +21,18 @@
                border: 1px solid black;
                text-align: center;
           }
+          #else{
+              color: red;
+              text-align: center;
+              margin-top:50px;
+              font-family: 'Colfax';
+              font-size: 23px;
+              font-weight: 400;
+          }
      </style>
  </head>
  <body>
+     {% if values %}
      <h2><center>Expert Reviews</center></h2>
      <table>
           <tr>
@@ -63,6 +72,9 @@
 
      {% endfor %}
      </table>
+     {% else %}
+     <p id="else">No Reviews to Show.</p>
+     {% endif %}
  </body>
  </html>
  {% endblock %}

@@ -19,19 +19,28 @@
 
     <!--<title>Responsive Regisration Form </title>--> 
     <style>
-     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+               @font-face {
+               font-family: 'Colfax';
+               src: url('static/fonts/Colfax-Light.woff2') format('woff2'),
+                    url('static/fonts/Colfax-Bold.woff2') format('woff2');
+               font-weight: normal;
+               font-style: normal;
+          }
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Colfax';
+
 }
 body{
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #4070f4;
+    background: lightgoldenrodyellow;
+    font-size: 15px;
+    font-weight: 600;
 }
 .container{
     position: relative;
@@ -105,12 +114,15 @@ form .fields .input-field{
     width: 50%;
     flex-direction: column;
     margin: 4px 0;
+
 }
 .input-field label{
     margin-left: 5px;
     font-size: 12px;
     font-weight: 500;
     color: #2e2e2e;
+    font-size: 13px;
+    font-weight: 600;
 }
 .input-field input, select{
     outline: none;
@@ -122,6 +134,8 @@ form .fields .input-field{
     padding: 0 15px;
     height: 42px;
     margin: 8px 3px;
+    font-size: 13px;
+    font-weight: 600;
 
 }
 .input-field input :focus,
@@ -196,6 +210,7 @@ form .buttons button , .backBtn{
         width: 100%;
     }
 }
+
  
     </style>
 </head>
@@ -227,24 +242,24 @@ form .buttons button , .backBtn{
 
                         <div class="input-field">
                             <label>Seats</label>
-                            <select name="seat" >
+                            <select name="seat"  style="font-family: Colfax;font-size: 15px;">
                                 <option value="sel_seats">Select Seats</option>
+                                <option value="4">4</option>
                                 <option value="5">5</option>
                                 <option value="6">6</option>
                                 <option value="7">7</option>
                             </select>
                         </div>
 
-                        <div class="input-field">
+                        
                             <label>Fuel</label>
-                            <select name="fuel"required>
-                                <option disabled selected>Select Fuel</option>
-                                <option>Petrol</option>
-                                <option>Diesel</option>
-                                <option>CNG</option>
-                                <option>Electric Vehicle</option>
-                            </select>
-                        </div>
+                            <label style="display: inline-block;"><input type="checkbox" name="fuel" value="Petrol"> Petrol</label>
+                            <label style="display: inline-block;"><input type="checkbox" name="fuel" value="Diesel"> Diesel</label>
+                            <label style="display: inline-block;"><input type="checkbox" name="fuel" value="CNG"> CNG</label>
+                            <label style="display: inline-block;"><input type="checkbox" name="fuel" value="Electric Vehicle"> Electric Vehicle</label>
+                            
+                            
+                        
 
                         <div class="input-field">
                             <label>Price</label>

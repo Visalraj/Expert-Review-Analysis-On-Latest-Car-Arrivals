@@ -39,6 +39,7 @@ urlpatterns = [
     path('requestedexperts',views.requestedexperts),
     path('expertreviews',views.expertreviews),
     path('expertreviewoncar',views.expertreviewoncar,name='expert_review_on_car'),
+    path('reviewaddedsuccessful',views.reviewaddedsuccessful),
     path('expertreviewstatus',views.expertreviewstatus),
     path('showreviews',views.showreviews),
     path('acceptreview',views.acceptreview),
@@ -48,7 +49,10 @@ urlpatterns = [
     path('updatecardetails',views.updatecardetails),
     path('deletecars',views.deletecars),
     path('deleteusers',views.deleteusers),
+    path('deleteexperts',views.deleteexperts),
+    path('contact',views.contact),
     path('activate',views.activate),
+    path('showcertificate',views.showcertificate)
     
 ]
 

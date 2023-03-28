@@ -25,9 +25,18 @@
      #links{
           margin: 5px;
      }
+     #else{
+              color: red;
+              text-align: center;
+              margin-top:50px;
+              font-family: 'Colfax';
+              font-size: 23px;
+              font-weight: 400;
+          }
      </style>
 </head>
 <body>
+     {% if value %}
      <h3><center>All Experts</center></h3><br>
      <table border="1" >
           <tr>
@@ -50,10 +59,13 @@
                <td>{{i.mobilenumber}}</td>
                <td>{{i.experience}}</td>
                <td>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                   <a href="deleteexperts?id={{i.id}}"><button type="button" class="btn btn-danger">Delete</button></a> 
                </td>
           </tr>
           {% endfor %}
+          {% else %}
+          <p id="else">No Experts to Show.</p>
+          {% endif %}
 
 
           

@@ -20,14 +20,16 @@ class Registration (models.Model):
 
 
 class Expert(models.Model):
-    firstname = models.CharField(max_length=255)
-    lastname = models.CharField(max_length=255)
-    gender = models.CharField(max_length=200)
-    email = models.CharField(max_length=255)
-    mobilenumber = models.CharField(max_length=20)
-    experience = models.CharField(max_length=200)
-    password = models.CharField(max_length=255)
-    confirm_password = models.CharField(max_length=255)
+    firstname = models.CharField(max_length=255,null=True)
+    lastname = models.CharField(max_length=255,null=True)
+    date = models.CharField(max_length=200,null=True)
+    gender = models.CharField(max_length=200,null=True)
+    email = models.CharField(max_length=255,null=True)
+    mobilenumber = models.CharField(max_length=20,null=True)
+    experience = models.CharField(max_length=200,null=True)
+    password = models.CharField(max_length=255,null=True)
+    file = models.ImageField(null=True)
+    status = models.BooleanField(default=False,null=True)
 
 
 class Car(models.Model):

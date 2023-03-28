@@ -1,0 +1,17 @@
+{% if image %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+<body>
+     <a href="/requestedexperts">Back</a>
+     {% for i in image %}
+     <center><img src="static/media/{{i.file}}" width="500" height="500"alt="experience" ></center>
+     {% endfor %}
+</body>
+</html>
+{% endif %}

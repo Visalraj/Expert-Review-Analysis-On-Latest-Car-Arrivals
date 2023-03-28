@@ -24,10 +24,20 @@
                padding: 10px;
                border: 1px solid black;
           }
+          #else{
+              color: red;
+              text-align: center;
+              margin-top:50px;
+              font-family: 'Colfax';
+              font-size: 23px;
+              font-weight: 400;
+          }
      </style>
 </head>
 <body>
+     {% if value %}
 <h2>Manage Cars</h2>
+
 <table>
      <tr>
           <th>Car Id</th>
@@ -58,6 +68,10 @@
 
      {% endfor %}
 </table>
+{% else %}
+<p id="else">No Cars to Show.</p> 
+{% endif %}
+
 </body>
 </html>
 

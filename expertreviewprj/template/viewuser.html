@@ -25,10 +25,19 @@
      #links{
           margin: 5px;
      }
+     #else{
+              color: red;
+              text-align: center;
+              margin-top:50px;
+              font-family: 'Colfax';
+              font-size: 23px;
+              font-weight: 400;
+          }
      </style>
 </head>
 <body>
-     <h3><center>All Users</center></h3><br>
+     {% if s %} 
+     <h3><center>All Customers</center></h3><br>
      <table border="1" >
           <tr>
                <th>FirstName</th>
@@ -47,11 +56,16 @@
                <td>{{i.mobileno}}</td>
                <td><a href="deleteusers?id={{i.id}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
           </tr>
+
+          
           {% endfor %}
 
 
           
      </table>
+     {% else %}
+     <p id="else">No Customers to Show.</p>
+     {% endif %}
 </body>
 </html>
 {% endblock %}

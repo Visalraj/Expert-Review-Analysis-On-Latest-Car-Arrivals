@@ -3,6 +3,7 @@ from .models import *
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.db.models import Q
 
 # Create your views here.
 
@@ -39,6 +40,8 @@ def register(request):
                 r.save()
                 u=User.objects.create_user(username=email,password=password,is_superuser=0,is_active=1,email=email)
                 u.save()
+                messages.success(request, 'Registration Successfull.You may now login!')
+                return redirect('/register')
 
         return render(request,'demoregister.html') 
 
@@ -105,17 +108,20 @@ def expertregistration(request):
         if request.POST :
                 fname = request.POST['fname']
                 lname = request.POST['lastname']
+                date = request.POST['date']
                 gender = request.POST['gender']
                 email = request.POST['email']
                 mobno = request.POST['mobileno']
                 experience = request.POST['exp']
                 password = request.POST['password']
-                con_password = request.POST['cpass']
-                print(fname,lname,gender,email,mobno,experience,password,con_password)
-                r = Expert.objects.create(firstname = fname,lastname = lname,gender = gender,email = email,mobilenumber = mobno,experience = experience,password = password,confirm_password = con_password )
+                cert = request.FILES['certificate']
+                print(fname,lname,gender,email,mobno,experience,password)
+                r = Expert.objects.create(firstname = fname,lastname = lname,date = date,gender = gender,email = email,mobilenumber = mobno,experience = experience,password = password,file = cert )
                 r.save()
                 u = User.objects.create_user(username=email,password=password,is_superuser=0,is_active=0,is_staff = 1 ,email=email) 
                 u.save()
+                messages.success(request,'Registration Successfull.')
+                return redirect('/expertregistration')
         return render(request,'expertregistration.html')
 
 def experthome(request):
@@ -144,7 +150,7 @@ def addcars(request):
                 carn =request.POST['carname']
                 modeln = request.POST['modelname']
                 seat = request.POST['seat']
-                fuel = request.POST['fuel']
+                fuel = request.POST.getlist('fuel')
                 price = request.POST['price']
                 image = request.FILES['image']
                 q = Car.objects.create(brandname = brandn,carname = carn,modelname=modeln,seats = seat,fuel = fuel,price = price,image = image)
@@ -153,12 +159,19 @@ def addcars(request):
         return render(request,'addcars.html')
 
 def addreview(request):
+        eid=request.session['exid']
+        r=Review.objects.filter(exp=eid)
+        print(r)
+        lis = [ ]
+        for i in r:
+                lis.append(i.cid.id)
+        print(lis)
         var = Car.objects.filter(rv=0)
-        return render(request,'addreview.html',{"obj":var})
+        return render(request,'addreview.html',{"obj":var, "lis":lis})
 
 
 def viewexperts(request):
-        obj = Expert.objects.all()
+        obj = Expert.objects.filter(status=True)
         return render(request,'viewexpert.html',{"value":obj})
 
 def requestedexperts(request):
@@ -168,7 +181,7 @@ def requestedexperts(request):
 
 
 def expertreviews(request):
-        obj = Expert.objects.all()
+        obj = Expert.objects.filter(status = True)
         return render(request,'expertreviews.html',{"value":obj})
 
 def expertreviewoncar(request):
@@ -189,6 +202,7 @@ def expertreviewoncar(request):
                 info = request.POST['info']
                 qu = Review.objects.create(cid = carid ,mileage = mileage,extandint = extandint,engine = engandtrans,suspension = suspension,electronics = electric,fluids = fluids,tires = tires,info = info,exp = expid )
                 qu.save()
+                return redirect('/reviewaddedsuccessful')
              
         return render(request,'expertreviewoncar.html',{"carid":carid,"image":carimage})
 
@@ -258,5 +272,22 @@ def activate(request):
         id=request.GET.get("id")
         r=Expert.objects.get(id=id)
         User.objects.filter(email=r.email).update(is_active=1)
+        Expert.objects.filter(id=id).update(status = True)
         return redirect("/requestedexperts")
 
+def deleteexperts(request):
+        id = request.GET.get('id')
+        expobj = Expert.objects.filter(id = id).delete()
+        return render(request,'deleteexperts.html')
+
+def reviewaddedsuccessful(request):
+        return render(request,'reviewaddedsuccess.html')
+
+def contact(request):
+        return render(request,'contact.html')
+
+
+def showcertificate(request):
+        id = request.GET.get('id')
+        image = Expert.objects.filter(id=id)
+        return render(request,'showcertificate.html',{"image":image})
