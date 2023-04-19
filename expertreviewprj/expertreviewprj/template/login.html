@@ -1,0 +1,106 @@
+{% extends 'commonheader.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Login</title>
+     <style>
+          #login_text {
+               padding: 10px;
+               text-align: center;
+               color: #EF5861;
+               margin-top: 30px;
+          }
+          form {
+               width: fit-content;
+               margin: auto;
+               margin-top: 10px;
+               padding: 15px;
+               border-radius: 8px;
+               text-align: center;
+          }
+          #username{
+               width: 350px;
+               border-top: 1px;
+               border-left: none;
+               border-right: none;
+               outline: none;
+               border-width: 1px;
+               margin: 7px;
+               margin-top: 15px;
+               letter-spacing: 0.1em;
+               font-family: Georgia, 'Times New Roman', Times, serif;
+               font-size: 16px;
+          }
+          #password{
+               display: block;
+               width: 350px;
+               border-top: 1px;
+               border-left: none;
+               border-right: none;
+               outline: none;
+               border-width: 1px;
+               margin: 7px;
+               margin-top: 15px;
+               letter-spacing: 0.1em;
+               font-family: Georgia, 'Times New Roman', Times, serif;
+               font-size: 16px;
+          }
+          #type{
+               display: block;
+               width: 350px;
+               margin-left: 6px;
+               border-top: 1px;
+               border-left: none;
+               border-right: none;
+               outline: none;
+               border-width: 1px;
+               letter-spacing: 0.1em;
+               font-family: Georgia, 'Times New Roman', Times, serif;
+               font-size: 16px;
+               color: gray;
+
+          }
+          #submit {
+               display: block;
+               margin: auto;
+               margin-top: 30px;
+               width: 55%;
+               background: #EF5861;
+               border: none;
+               padding: 5px;
+               border-radius: 8px;
+               letter-spacing: 0.01em;
+               font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 18px;
+          }
+
+          #submit:hover {
+               background-color: green;
+               color: white;
+          }
+     </style>
+</head>
+<body>
+     <h1 id="login_text">Login Form</h1>
+     <form action="" method="POST">
+          {% csrf_token %}
+
+     <input type="text" name="username" id="username" placeholder="Username"><br><br>
+  
+     <input type="password" name="password" id="password" placeholder="Password"><br><br>
+
+     <select name="role" id="type">
+          <option value="you are a">You are a</option>
+          <option value="customer">Customer</option>
+          <option value="expert">Expert</option>
+     </select>
+     <input type="submit" id ="submit" value="Login Now">
+</form>
+</body>
+</html>
+{% endblock %}
